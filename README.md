@@ -1,10 +1,11 @@
-# Inventory-manager API 🚀
+# Inventory Manager API 🚀
+v 0.1.0
 
 [Português]
-Esta é uma API RESTful desenvolvida em Python para o gerenciamento de produtos com autenticação de usuários. O sistema garante que cada produto seja vinculado ao seu criador, aplicando regras de negócio para proteger os dados.
+Esta é uma API RESTful desenvolvida em Python para o gerenciamento de produtos com autenticação de usuários. O sistema garante que cada produto seja vinculado ao seu criador, aplicando regras de negócio para proteger os dados. Cada inventário é independente, e cada produto só pode ser cadastrado uma vez.
 
 [English]
-This is a RESTful API developed in Python for product management with user authentication. The system ensures each product is linked to its creator, applying business rules to protect data.
+This is a RESTful API developed in Python for product management with user authentication. The system ensures each product is linked to its creator, applying business rules to protect data. Each inventory is independent, and each product can be added only once.
 
 ---
 
