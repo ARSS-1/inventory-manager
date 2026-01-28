@@ -12,7 +12,7 @@ class User(db.Model):
     password_hash: Mapped[str] = mapped_column(nullable=False)
     products: Mapped[List["Product"]] = relationship(back_populates="user")
 
-    __table_args__ = (SA.UniqueConstraint("name", "user_id", name="_user_product_uc"),)
+    
 
 
 class Product(db.Model):
@@ -25,3 +25,6 @@ class Product(db.Model):
     description: Mapped[Optional[str]] = mapped_column(nullable=True)
     user_id: Mapped[int] = mapped_column(SA.ForeignKey("users.id"))
     user: Mapped["User"] = relationship(back_populates="products")
+
+    __table_args__ = (SA.UniqueConstraint("name", "user_id", name="_user_product_uc"),)
+
