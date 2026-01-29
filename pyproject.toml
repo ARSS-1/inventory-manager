@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "API de Gestão de Inventário com Flask, Pydantic e JWT"
 authors = ["Asafe Ruben <asaferuben@outlook.com>"]
 readme = "README.md"
+package-mode = false
 
 
 [tool.poetry.dependencies]
@@ -19,4 +20,5 @@ uvicorn = ">=0.40.0,<0.41.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
+
 build-backend = "poetry.core.masonry.api"
