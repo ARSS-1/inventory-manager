@@ -80,7 +80,7 @@ return {'message':'Usuário criado com sucesso!'}
 {
     'name': 'nome do produto',
     'price': 10.00,
-    'description' : 'descrição opcional'
+    'description' : 'descrição opcional',
     'quantity': 1
 }
 
