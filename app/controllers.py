@@ -13,7 +13,7 @@ user_bp = Blueprint("users", __name__)
 
 
 # ADD A NEW PRODUCT
-@product_bp.route("/products", methods=["POST"])
+@product_bp.route("/products/new", methods=["POST"])
 @jwt_required()
 def new_product():
     try:
@@ -121,6 +121,26 @@ def delete_product(id):
     db.session.commit()
 
     return {"message": "Produto removido com sucesso."}, 200
+
+
+# PROCURA UM PRODUTO PELO ID, E O EXIBE.
+@product_bp.route("/products/<int:id>", methods=["GET"])
+@jwt_required()
+def list_product_by_id(id):
+    query = select(Product).where(Product.id == id)
+    user_id = int(get_jwt_identity())
+
+    product = db.session.scalar(query)
+
+    if not product:
+        return {"message": "Produto não encontrado!"}, 404
+
+    if product.user_id != user_id:
+        return {"message": "Usuário não autorizado."}, 403
+
+    output = ProductOut.model_validate(product).model_dump()
+
+    return output, 201
 
 
 # PROCURA UM PRODUTO PELO ID, E O ATUALIZA

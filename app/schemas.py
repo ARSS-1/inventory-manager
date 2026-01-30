@@ -1,11 +1,12 @@
 from pydantic import (
     BaseModel,
     Field,
-    PositiveFloat,
     PositiveInt,
     ConfigDict,
     AfterValidator,
     BeforeValidator,
+    NonNegativeInt,
+    NonNegativeFloat,
 )
 from typing import Annotated, List, Optional
 
@@ -27,8 +28,8 @@ class ProductBase(BaseModel):
     name: Annotated[
         str, Field(description="Product", max_length=100), AfterValidator(set_lowcase)
     ]
-    quantity: Annotated[PositiveInt, Field(description="Quantity", default=0)]
-    price: Annotated[PositiveFloat, Field(description="Price", default=1.0)]
+    quantity: Annotated[NonNegativeInt, Field(description="Quantity", default=0)]
+    price: Annotated[NonNegativeFloat, Field(description="Price", default=1.0)]
     description: Annotated[
         Optional[str], Field(description="Description", default=None)
     ]
@@ -56,9 +57,11 @@ class ProductUpdate(BaseModel):
         AfterValidator(set_lowcase),
     ]
     quantity: Annotated[
-        Optional[PositiveInt], Field(description="Quantity", default=None)
+        Optional[NonNegativeInt], Field(description="Quantity", default=None)
     ]
-    price: Annotated[Optional[PositiveFloat], Field(description="Price", default=None)]
+    price: Annotated[
+        Optional[NonNegativeFloat], Field(description="Price", default=None)
+    ]
     description: Annotated[
         Optional[str], Field(description="Description", default=None)
     ]
